@@ -39,10 +39,16 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            FloatingActionButton(
+              onPressed: () {},
+              tooltip: 'Decrement',
+              child: const Icon(Icons.remove),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: const Key('increment'),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
