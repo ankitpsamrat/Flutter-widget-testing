@@ -13,7 +13,9 @@ void main() {
     ];
 
     Future<List<User>> tempUser() async {
-      return users;
+      return Future.delayed(const Duration(seconds: 1), () {
+        return users;
+      });
     }
 
     await tester.pumpWidget(
@@ -24,6 +26,20 @@ void main() {
       ),
     );
 
-    expect(CircularProgressIndicator, findsOneWidget);
+    // check CircularProgressIndicator
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    await tester.pumpAndSettle();
+
+    // check listview
+    expect(find.byType(ListView), findsOneWidget);
+
+    // check listtile
+    expect(find.byType(ListTile), findsNWidgets(users.length));
+
+    // check user details
+    for (final user in users) {
+      expect(find.text(user.name), findsOneWidget);
+      expect(find.text(user.email), findsOneWidget);
+    }
   });
 }

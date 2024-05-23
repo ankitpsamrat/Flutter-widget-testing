@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testing/api_test/home_screen.dart';
-import 'package:testing/api_test/user_repository.dart';
+import 'package:testing/animation_test/animation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Widget Testing',
-      home: HomeScreen(
-        futureUsers: UserRepository().fetchUsers(),
-      ),
+      home: AnimationScreen(),
+      // home: CounterHomePage(),
+      // home: HomeScreen(
+      //   futureUsers: UserRepository().fetchUsers(),
+      // ),
     );
   }
 }
